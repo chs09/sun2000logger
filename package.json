@@ -1,0 +1,25 @@
+{
+  "name": "sun2000logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "huawei",
+    "sun2000",
+    "modbus"
+  ],
+  "author": "Christian Heine",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "modbus-serial": "^8.0.10",
+    "moment": "~2.29.4",
+    "mysql2": "~3.2.0",
+    "simple-node-logger": "~21.8.12"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.3"
+  }
+}
