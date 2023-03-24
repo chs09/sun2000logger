@@ -8,7 +8,7 @@ import { log as Logger } from './utils/logger';
 import { settings } from './settings';
 import { DataSet } from './data';
 
-import { Register, PhaseAVoltage, PhaseBVoltage, PhaseCVoltage, Alarm1, Alarm2, Alarm3, PhaseACurrent, PhaseBCurrent, PhaseCCurrent, PowerFactor, GridFrequency, InternalTemperature, MeterPhaseAPower, MeterPhaseBPower, MeterPhaseCPower, Battery1SOC, Battery1ChargePower, Battery1Temperature, PeakPower, ActivePower, PV1Voltage, PV1Current, PV2Current, PV2Voltage } from './register';
+import { Register, PhaseAVoltage, PhaseBVoltage, PhaseCVoltage, Alarm1, Alarm2, Alarm3, PhaseACurrent, PhaseBCurrent, PhaseCCurrent, PowerFactor, GridFrequency, InternalTemperature, MeterPhaseAPower, MeterPhaseBPower, MeterPhaseCPower, Battery1SOC, Battery1ChargePower, Battery1Temperature, PeakPower, ActivePower, PV1Voltage, PV1Current, PV2Current, PV2Voltage, InputPower } from './register';
 
 interface ClientEvents {
     on(event: 'error', listener: (...args: any[]) => void): this;
@@ -71,6 +71,8 @@ async function requestBlock(client: ModbusRTU, dp: DataSet)
 
     dp.pv2Voltage = await read(client, PV2Voltage);
     dp.pv2Current = await read(client, PV2Current);
+
+    dp.pvPower = await read(client, InputPower);
 }
 
 export class Client extends EventEmitter implements ClientEvents {

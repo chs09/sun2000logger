@@ -31,4 +31,6 @@ export interface DataSet {
 
     pv2Voltage: number;
     pv2Current: number;
+
+    pvPower: number;
 }

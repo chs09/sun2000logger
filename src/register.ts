@@ -27,6 +27,8 @@ export const PV1Current: Register<number> = { name: "PV1 Current", address: 3201
 export const PV2Voltage: Register<number> = { name: "PV2 Voltage", address: 32018, length: 1, read: (buf) => I16(buf, 10), unit: 'V' };
 export const PV2Current: Register<number> = { name: "PV2 Current", address: 32019, length: 1, read: (buf) => I16(buf, 100), unit: 'A' };
 
+export const InputPower: Register<number> = { name: "Input Power", address: 32064, length: 2, read: (buf) => I32(buf, 1), unit: 'W' };
+
 export const PhaseAVoltage: Register<number> = { name: "Phase A Voltage", address: 32069, length: 1, read: (buf) => U16(buf, 10), unit: 'V' };
 export const PhaseBVoltage: Register<number> = { name: "Phase B Voltage", address: 32070, length: 1, read: (buf) => U16(buf, 10), unit: 'V' };
 export const PhaseCVoltage: Register<number> = { name: "Phase C Voltage", address: 32071, length: 1, read: (buf) => U16(buf, 10), unit: 'V' };
