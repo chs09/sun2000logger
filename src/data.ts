@@ -3,7 +3,7 @@ import { Alarm } from "./alarms";
 export interface DataSet {
     activePower: number;
     peakPower: number;
-    
+
     phaseACurrent: number;
     phaseBCurrent: number;
     phaseCCurrent: number;
@@ -24,5 +24,11 @@ export interface DataSet {
     
     phaseCVoltage: number;
     phaseBVoltage: number;
-    phaseAVoltage: number;    
+    phaseAVoltage: number;
+
+    pv1Voltage: number;
+    pv1Current: number;
+
+    pv2Voltage: number;
+    pv2Current: number;
 }
