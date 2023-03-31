@@ -1,22 +1,65 @@
 import {Buffer} from 'node:buffer';
 import * as Alarms from './alarms';
 
-export interface Register<T> {
+/** Modbus data register descriptor */
+export interface Register<T>
+{    
+    /**
+     * The name or short description of the register.
+     */
     name: string;
+    
+    /**
+     * Modbus data registers address, which is a 16-bit or 32-bit number that specifies 
+     * the location of the register in the device's memory map. 
+     */
     address: number;
+    
+    /**
+     * Number of words to read, default=1 for 16-bit register
+     */
     length: number;
+    
+    /** 
+     * (Optional) Unit of the value represented by this register. Is undefined if not applicable.
+     */
     unit?: string;
+
+    /** 
+     * A mapping function to convert the read words.
+     */
     read(buf: Buffer): T;
 }
 
+/**
+ * Reads a signed, big-endian 16-bit integer from `buf`.
+ * It then divides the result by the `gain` parameter and returns the resulting value.
+ * @param buf Buffer to read from
+ * @param gain Scaling factor of value
+ * @returns signed 16-bit integer
+ */
 function I16(buf: Buffer, gain=1) {
     return buf.readInt16BE() / gain;
 }
 
+/**
+ * Reads an unsigned, big-endian 16-bit integer from `buf`.
+ * It then divides the result by the `gain` parameter and returns the resulting value.
+ * @param buf Buffer to read from
+ * @param gain Scaling factor of value
+ * @returns unsigned 16-bit integer
+ */
 function U16(buf: Buffer, gain=1) {
     return buf.readUInt16BE() / gain;
 }
 
+/**
+ * Reads a signed, big-endian 32-bit integer from `buf`.
+ * It then divides the result by the `gain` parameter and returns the resulting value.
+ * @param buf Buffer to read from
+ * @param gain Scaling factor of value
+ * @returns signed 32-bit integer
+ */
 function I32(buf: Buffer, gain=1) {
     return buf.readInt32BE() / gain;
 }
